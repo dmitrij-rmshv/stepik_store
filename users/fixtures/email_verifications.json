@@ -1,0 +1,32 @@
+[
+{
+  "model": "users.emailverification",
+  "pk": 1,
+  "fields": {
+    "code": "3b8fdce1-ec6f-4a9e-ab60-582fdfa665cb",
+    "user": 8,
+    "created": "2023-05-21T14:46:17.901Z",
+    "expiration": "2023-05-21T14:46:17.901Z"
+  }
+},
+{
+  "model": "users.emailverification",
+  "pk": 4,
+  "fields": {
+    "code": "88d3264d-ec63-4c64-b326-a81fec3fc2df",
+    "user": 11,
+    "created": "2023-06-10T20:44:55.919Z",
+    "expiration": "2023-06-10T21:45:43.919Z"
+  }
+},
+{
+  "model": "users.emailverification",
+  "pk": 5,
+  "fields": {
+    "code": "7900159a-4cfd-4571-8e9a-58a8c03caecf",
+    "user": 12,
+    "created": "2023-06-11T06:44:47.387Z",
+    "expiration": "2023-06-13T06:44:47.386Z"
+  }
+}
+]

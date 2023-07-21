@@ -1,0 +1,5 @@
+__pycache__/
+.idea
+setenv.sh
+.flake8
+media

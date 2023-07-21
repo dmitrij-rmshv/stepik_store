@@ -1,0 +1,327 @@
+[
+{
+  "model": "products.product",
+  "pk": 2,
+  "fields": {
+    "name": "Худи черного цвета с монограммами adidas Originals",
+    "description": "Мягкая ткань для свитшотов. Стиль и комфорт – это образ жизни.",
+    "price": "6090.00",
+    "quantity": 14,
+    "image": "products_images/Adidas-hoodie.png",
+    "category": 1,
+    "on_sale": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 3,
+  "fields": {
+    "name": "Синяя куртка The North Face",
+    "description": "Гладкая ткань. Водонепроницаемое покрытие. Легкий и теплый пуховый наполнитель.",
+    "price": "23725.00",
+    "quantity": 32,
+    "image": "products_images/Blue-jacket-The-North-Face.png",
+    "category": 1,
+    "on_sale": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 4,
+  "fields": {
+    "name": "Коричневый спортивный oversized-топ ASOS DESIGN",
+    "description": "Материал с плюшевой текстурой. Удобный и мягкий.",
+    "price": "3390.00",
+    "quantity": 39,
+    "image": "products_images/Brown-sports-oversized-top-ASOS-DESIGN.png",
+    "category": 1,
+    "on_sale": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 5,
+  "fields": {
+    "name": "Черные туфли на платформе с 3 парами люверсов Dr Martens 1461 Bex",
+    "description": "Гладкий кожаный верх. Натуральный материал.",
+    "price": "13590.00",
+    "quantity": 39,
+    "image": "products_images/Black-Dr-Martens-shoes.png",
+    "category": 2,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 6,
+  "fields": {
+    "name": "Черный рюкзак Nike Heritage",
+    "description": "Плотная ткань. Легкий материал.",
+    "price": "2340.00",
+    "quantity": 24,
+    "image": "products_images/Black-Nike-Heritage-backpack.png",
+    "category": 3,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 7,
+  "fields": {
+    "name": "Темно-синие широкие строгие брюки ASOS DESIGN",
+    "description": "Легкая эластичная ткань сирсакер Фактурная ткань.",
+    "price": "2890.00",
+    "quantity": 29,
+    "image": "products_images/Dark-blue-wide-leg-ASOs-DESIGN-trousers.png",
+    "category": 1,
+    "on_sale": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 9,
+  "fields": {
+    "name": "Шлепанцы Crocs из материала  крослайт",
+    "description": "Модель не натирает ногу, не скользит по мокрому полу,  обладает антисептическими свойствами.",
+    "price": "3290.00",
+    "quantity": 17,
+    "image": "products_images/shlepantsy-crocs.jpg",
+    "category": 2,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 10,
+  "fields": {
+    "name": "Urban Tiger",
+    "description": "Джемпер с добавлением шерсти",
+    "price": "10900.00",
+    "quantity": 35,
+    "image": "products_images/Urban_Tiger.jpg",
+    "category": 1,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 11,
+  "fields": {
+    "name": "HUGO Кожаные кроссовки",
+    "description": "верх: 64% Композиционная кожа 36% ПОЛИУРЕТАН; 75% ПОЛИЭСТЕР 25% ХЛОПОК; подкладка: 75% ПОЛИЭСТЕР 25% ХЛОПОК; подошва: 100% РЕЗИНА",
+    "price": "17590.00",
+    "quantity": 9,
+    "image": "products_images/HUGO_Кожаные_кроссовки.jpg",
+    "category": 2,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 12,
+  "fields": {
+    "name": "Marc O'Polo Платок",
+    "description": "Полупрозрачное полотно позволяет коже дышать. Украшен принтом с флористичными мотивами и изящной бахромой на торцах.",
+    "price": "3990.00",
+    "quantity": 12,
+    "image": "products_images/Marc_O_Polo_Платок.jpg",
+    "category": 3,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 13,
+  "fields": {
+    "name": "Perspective Мини-юбка",
+    "description": "54% хлопок, 22% полиэстер, 12% люрекс, 12% вискоза",
+    "price": "5590.00",
+    "quantity": 7,
+    "image": "products_images/Perspective_Мини-юбка.jpg",
+    "category": 1,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 14,
+  "fields": {
+    "name": "BOSS Босоножки",
+    "description": "верх: 100% Козья кожа; подкладка: 100% ПОЛИЭСТЕР; 51% Композиционная кожа 49% ПОЛИУРЕТАН; 100% ХЛОПОК; подошва: 100% РЕЗИНА",
+    "price": "13590.00",
+    "quantity": 10,
+    "image": "products_images/BOSS_Босоножки.jpg",
+    "category": 2,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 15,
+  "fields": {
+    "name": "BELUCCI Хлопковая панама",
+    "description": "Состав100% хлопок Артикул5240677 Материалхлопок",
+    "price": "3590.00",
+    "quantity": 8,
+    "image": "products_images/BELUCCI_Хлопковая_панама.jpg",
+    "category": 3,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 16,
+  "fields": {
+    "name": "Naf Naf Вязаный топ с принтом",
+    "description": "Состав50% акрил, 50% хлопок\r\nАртикул5230525\r\nМатериалакрил, хлопок",
+    "price": "4690.00",
+    "quantity": 6,
+    "image": "products_images/Naf_Naf_топ.jpg",
+    "category": 1,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 17,
+  "fields": {
+    "name": "VAGABOND Кожаные мюли",
+    "description": "Обувь на миниатюрном каблуке сочетается с брюками трубами, джинсами и юбками.",
+    "price": "8590.00",
+    "quantity": 1,
+    "image": "products_images/VAGABOND_Кожаные_мюли.jpg",
+    "category": 2,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 18,
+  "fields": {
+    "name": "Tommy Hilfiger сумка кросс-боди",
+    "description": "Компактная модель с основным отделением на молнии, широкий наплечный ремень.",
+    "price": "12990.00",
+    "quantity": 13,
+    "image": "products_images/Tommy_Hilfiger_сумка.jpg",
+    "category": 3,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 19,
+  "fields": {
+    "name": "CASAMORATI Парфюмерная вода FIERO",
+    "description": "Образец классического аромата, гармонично объединяющего традиционные ноты.",
+    "price": "36146.00",
+    "quantity": 1,
+    "image": "products_images/CASAMORATI_FIERO.jpg",
+    "category": 4,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 20,
+  "fields": {
+    "name": "Leilieve Трусы слипы Summer wind",
+    "description": "Трусы-брифы Leilieve из качественного кружева. Хлопковая ластовица и мягкая резинка обеспечивают комфорт.",
+    "price": "1590.00",
+    "quantity": 10,
+    "image": "products_images/Leilieve_Трусы_Summer_wind.jpg",
+    "category": 1,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 21,
+  "fields": {
+    "name": "Tommy Hilfiger Кожаные балетки",
+    "description": "верх: 100% Кожа; подкладка: 100% хлопок; подошва: 100% резина",
+    "price": "9090.00",
+    "quantity": 1,
+    "image": "products_images/Tommy_Hilfiger_Кожаные_балетки.jpg",
+    "category": 2,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 22,
+  "fields": {
+    "name": "Collonil",
+    "description": "Крем для ухода за сумками",
+    "price": "1520.00",
+    "quantity": 9,
+    "image": "products_images/Collonil_Крем_уход_сумками.jpg",
+    "category": 4,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 23,
+  "fields": {
+    "name": "Doppler Зонт-автомат",
+    "description": "Зонт-автомат с принтом. 100% полиэстер. Общая длина 55 см",
+    "price": "4890.00",
+    "quantity": 13,
+    "image": "products_images/Doppler_Зонт.jpg",
+    "category": 3,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 24,
+  "fields": {
+    "name": "Парка в стиле колорблок",
+    "description": "Разноцветная выразительная модель простой и удобной конструкции.",
+    "price": "24740.00",
+    "quantity": 12,
+    "image": "products_images/Parka_Karl_Lagerfeld.jpg",
+    "category": 1,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 25,
+  "fields": {
+    "name": "Ботильоны Guess",
+    "description": "Ботильоны на устойчивом каблуке Preciou",
+    "price": "7970.00",
+    "quantity": 21,
+    "image": "products_images/Ботильоны_Guess.jpg",
+    "category": 2,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 26,
+  "fields": {
+    "name": "Маска для сна Пятница",
+    "description": "Изделие практичного черного цвета выполнено из мокрого шелка",
+    "price": "390.00",
+    "quantity": 1,
+    "image": "products_images/Маска_Kawaii_Factory.jpg",
+    "category": 3,
+    "on_sale": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 27,
+  "fields": {
+    "name": "Furla портмоне",
+    "description": "Кожаное портмоне Furla 1927",
+    "price": "16590.00",
+    "quantity": 10,
+    "image": "products_images/Furla_портмоне.jpg",
+    "category": 4,
+    "on_sale": true
+  }
+}
+]

@@ -1,0 +1,166 @@
+[
+{
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$VVOtVN7imECcKCsiuErfzJ$7ZhhoHl5YVfcfTRYruqzPuz916mNhNL/rPHN3/5zTb4=",
+    "last_login": "2023-06-10T18:20:57.739Z",
+    "is_superuser": true,
+    "username": "dima",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-05-01T19:39:49.582Z",
+    "image": "",
+    "is_verified_email": false,
+    "email": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$E91rvHerMtxmo6Vn6mupKz$EJJva4Npezco90+JuxEvQzFthmARxsX+SfPukUtLsSw=",
+    "last_login": "2023-06-11T09:41:18.650Z",
+    "is_superuser": false,
+    "username": "nikaba",
+    "first_name": "Вероника",
+    "last_name": "Абашева",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-05-06T17:37:29Z",
+    "image": "users_images/veronika.jpg",
+    "is_verified_email": false,
+    "email": "nikaba@mail.ru",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$sQ5R4ZM5OhWWgWG3caM9af$4XTEgftiShOJaq6mXe/wcznEkuLN+6DYjwYAB42UN7o=",
+    "last_login": "2023-05-07T18:58:28Z",
+    "is_superuser": false,
+    "username": "cockroach",
+    "first_name": "Михаил",
+    "last_name": "Тараканов",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-05-07T09:50:39Z",
+    "image": "",
+    "is_verified_email": false,
+    "email": "cockroach@mail.ru",
+    "groups": [],
+    "user_permissions": [
+      1
+    ]
+  }
+},
+{
+  "model": "users.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$jeyIfv8zkZdZ8lfCIw25LW$WvyhlbMLNdr5Lzy1BQOLF2bDtlXHc6AQ66LSxKIRtQk=",
+    "last_login": "2023-05-09T19:47:22Z",
+    "is_superuser": false,
+    "username": "rybak",
+    "first_name": "Сергей",
+    "last_name": "Васильев",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-05-07T09:58:31Z",
+    "image": "",
+    "is_verified_email": false,
+    "email": "rybak@yandex.ru",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$wNfKnUSjEQKIVaO6sVCZAa$8Rh/vWgRgIuvNMRSLP2f/AHkiLgKG1UqO/6H6GkM4ZA=",
+    "last_login": "2023-05-20T18:45:10.222Z",
+    "is_superuser": false,
+    "username": "shamil",
+    "first_name": "Шамиль",
+    "last_name": "Шаймухаметов",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-05-20T17:20:38.505Z",
+    "image": "",
+    "is_verified_email": false,
+    "email": "shamil@mail.tat",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$89wzkGeOMTopUNzckZ1NcB$v3K1x9eZ28q5kiGGLMhGoLMaPLi89SzAAZHw2Or3X0w=",
+    "last_login": "2023-05-21T14:46:47.714Z",
+    "is_superuser": false,
+    "username": "roman",
+    "first_name": "Роман",
+    "last_name": "Володин",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-05-21T14:46:17.666Z",
+    "image": "",
+    "is_verified_email": false,
+    "email": "volodin@mail.ru",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$LOJkGV3I2B6IIlVWBY2gJ7$ELhF+6NO1eDrbjhS05bDPskju/Jd5U2RrSegy1CFu80=",
+    "last_login": "2023-06-10T21:01:53.742Z",
+    "is_superuser": false,
+    "username": "x21",
+    "first_name": "Уйтварас",
+    "last_name": "Бриттенкант",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-06-10T20:44:55Z",
+    "image": "",
+    "is_verified_email": true,
+    "email": "x212@mail.lt",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$cnsVyHGv4aQ4NjMsfNboA6$n11SUJ5dTLCFbUnfRzbQ6kwjt1F2LvCbxu0rUa0kUv0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "gdems",
+    "first_name": "Дмитрий",
+    "last_name": "Ромашев",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-06-11T06:44:47.148Z",
+    "image": "",
+    "is_verified_email": true,
+    "email": "romashev.dmitrij@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
