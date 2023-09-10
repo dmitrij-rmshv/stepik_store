@@ -1,0 +1,41 @@
+{% extends 'products/base.html' %}
+{% load static humanize%}
+
+{% block css %}
+    <link href="{% static '/vendor/css/orders.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <!-- Page Content -->
+    <section>
+        <div class="container pt-5">
+            <div class="text-center mt-5">
+                <h1>Заказ № {{ order.id }}</h1>
+                <div class="orders mt-5">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Название</th>
+                            <th scope="col">Кол-во</th>
+                            <th scope="col">Цена</th>
+                            <th scope="col">Сумма</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in order.basket_history.purchased_items %}
+                            <tr>
+                                <th scope="row">{{ product.product_name }}</th>
+                                <td>{{ product.quantity }}</td>
+                                <td>{{ product.price|intcomma }}</td>
+                                <td>{{ product.sum|intcomma }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <p class="float-right h4 mt-3">Итого {{ order.basket_history.total_sum|intcomma }} руб.</p>
+                </div>
+            </div>
+            <a href="{% url 'orders:orders_list' %}">Назад к списку заказов</a>
+        </div>
+    </section>
+{% endblock %}

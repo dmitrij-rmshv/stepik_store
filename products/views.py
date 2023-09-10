@@ -28,10 +28,9 @@ class ProductsListView(ListView):
     def get_queryset(self, **kwargs):
         queryset = super().get_queryset().filter(on_sale=True)
         category_id = self.kwargs.get('category_id')
-        if category_id and category_id == self.novelties:
-        # if category_id == self.novelties:
-            return queryset.order_by('-id')[:self.new_prod_number]
-        return queryset.filter(category_id=category_id) if category_id else queryset
+        if category_id:
+            return queryset.filter(category_id=category_id) if category_id else queryset
+        return queryset.order_by('-id')[:self.new_prod_number]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
