@@ -1,5 +1,7 @@
 {% extends 'products/base.html' %}
+
 {% load static humanize %}
+
 
 {% block css %}
     <link href="{% static 'vendor/css/products.css' %}" rel="stylesheet">
@@ -17,13 +19,22 @@
                 <div class="list-group">
                     {% for category in categories %}
                         {% if category.id in present_categories %}
-                            <a href="{% url 'products:category' category.id %}" class="list-group-item">
+                            <a href="{% url 'products:category' category.id %}" class="list-group-item
+                                {% if category.id == current_category %} disabled{% endif %}">
                                 {{ category.name }}
                             </a>
+                            {% if forloop.last %}
+                                {% if current_category > 0 %}
+                                    <a href="{% url 'products:index' %}" class="list-group-item">Новинки</a>
+                                {% else %}
+                                    <a href="{% url 'products:index' %}"
+                                       class="list-group-item disabled">Новинки</a>
+                                {% endif %}
+                            {% endif %}
                         {% else %}
                             <a href="#" class="list-group-item disabled">
                                 {{ category.name }}
-                        </a>
+                            </a>
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -61,7 +72,6 @@
                 </div>
 
                 <div class="row">
-
                     {% for product in page_obj %}
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
@@ -85,7 +95,6 @@
                         </div>
                     </div>
                     {% endfor %}
-
                 </div>
 
                 {% if page_obj.has_other_pages %}

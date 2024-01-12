@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.cache import cache
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import HttpResponseRedirect
 from django.views.generic import ListView, TemplateView
@@ -17,13 +18,6 @@ class ProductsListView(ListView):
     template_name = 'products/products.html'
     paginate_by = 3
     new_prod_number = 9
-    try:
-        novelties = ProductCategory.objects.get(name='Новинки').id
-    except ObjectDoesNotExist:
-        novelties = None
-        # novelties = tuple()
-    # novelties = ProductCategory.objects.get(name='Новинки').id
-    # novelties = 5
 
     def get_queryset(self, **kwargs):
         queryset = super().get_queryset().filter(on_sale=True)
@@ -34,14 +28,21 @@ class ProductsListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        category_id = self.kwargs.get('category_id')
-        title = f'Каталог - {ProductCategory.objects.get(id=category_id).name}' if category_id else 'Store - Каталог'
-        present_categories = Product.objects.get_ctg_set()
-        if self.novelties:
-            present_categories.add(self.novelties)
+        if self.category_id:
+            title = f'Каталог - {ProductCategory.objects.get(id=self.category_id).name}'
+        else:
+            title = 'Store - Каталог'
         context['title'] = title
-        context['categories'] = ProductCategory.objects.all()
-        context['present_categories'] = present_categories
+        # categories = cache.get('categories')
+        # if categories:
+        #     context['categories'] = categories
+        # else:
+        #     cache.set('categories', ProductCategory.objects.all(), 30)
+        #     context['categories'] = cache.get('categories')
+        context['categories'] = cache.get_or_set('categories', ProductCategory.objects.all(), 300)
+        # context['categories'] = ProductCategory.objects.all()
+        context['present_categories'] = Product.objects.get_ctg_set()
+        context['current_category'] = self.category_id
         return context
 
 
