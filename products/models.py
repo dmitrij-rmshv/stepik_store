@@ -1,6 +1,10 @@
+import stripe
+from django.conf import settings
 from django.db import models
 
 from users.models import User
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 class ProductCategory(models.Model):
@@ -18,7 +22,8 @@ class ProductCategory(models.Model):
 
 class ProductQuerySet(models.QuerySet):
 
-    def get_ctg_set(self):
+    @staticmethod
+    def get_ctg_set():
         return set(product.category_id for product in Product.objects.filter(on_sale=True))
 
 
@@ -28,6 +33,7 @@ class Product(models.Model):
     price = models.DecimalField(verbose_name='цена', max_digits=8, decimal_places=2)
     quantity = models.PositiveIntegerField(verbose_name='кол.', default=0)
     image = models.ImageField(verbose_name='изображение', upload_to='products_images')
+    stripe_product_price_id = models.CharField(verbose_name='stripe_price.id', max_length=64, null=True, blank=True)
     category = models.ForeignKey(verbose_name='категория', to=ProductCategory, on_delete=models.CASCADE)
     on_sale = models.BooleanField(verbose_name='on', default=True)  # ɥҔɧʮЊЋѤҾӔῷ₪√♦♯￼
 
@@ -42,6 +48,43 @@ class Product(models.Model):
         return f'{self.name} | категория: {self.category.name}'
         # return f'Продукт: {self.name} | Категория: {self.category.name}'  # author variant
 
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        if not self.stripe_product_price_id:
+            stripe_product_price = self.create_stripe_product_price()
+            self.stripe_product_price_id = stripe_product_price['id']
+        super(Product, self).save(force_insert=False, force_update=False, using=None,
+                                  update_fields=None)
+
+    def create_stripe_product_price(self):
+        stripe_product = stripe.Product.create(
+            name=self.name,
+            active=self.on_sale,
+            description=self.description,
+            metadata={
+                'category': self.category.name,
+                'in_stock': self.quantity
+            }
+        )
+        stripe_product_price = stripe.Price.create(
+            product=stripe_product['id'],
+            currency='rub',
+            unit_amount=round(self.price * 100)
+        )
+        return stripe_product_price
+
+    def update_stripe_product_qty(self, new_qty):
+        stripe_product_id = stripe.Price.retrieve(self.stripe_product_price_id)['product']
+        metadata = stripe.Product.retrieve(stripe_product_id)['metadata']
+        metadata['in_stock'] = new_qty
+        stripe.Product.modify(
+            stripe_product_id,
+            metadata=metadata,
+        )
+
+    # def fill_prod_id(self):
+    #     stripe_product = stripe.Product.search()
+
 
 class BasketQuerySet(models.QuerySet):
 
@@ -50,6 +93,17 @@ class BasketQuerySet(models.QuerySet):
 
     def total_quantity(self):
         return sum(basket.quantity for basket in self)
+
+    def stripe_products(self):
+        line_items = []
+        for basket in self:
+            line_items.append(
+                {
+                    'price': basket.product.stripe_product_price_id,
+                    'quantity': basket.quantity
+                }
+            )
+        return line_items
 
 
 class Basket(models.Model):
@@ -70,3 +124,12 @@ class Basket(models.Model):
 
     def sum(self):
         return self.quantity * self.product.price
+
+    def de_json(self):
+        basket_item = {
+            'product_name': self.product.name,
+            'quantity': self.quantity,
+            'price': float(self.product.price),
+            'sum': float(self.sum())
+        }
+        return basket_item
