@@ -21,9 +21,6 @@ class ProductsListView(ListView):
         novelties = ProductCategory.objects.get(name='Новинки').id
     except ObjectDoesNotExist:
         novelties = None
-        # novelties = tuple()
-    # novelties = ProductCategory.objects.get(name='Новинки').id
-    # novelties = 5
 
     def get_queryset(self, **kwargs):
         queryset = super().get_queryset().filter(on_sale=True)
