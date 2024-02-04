@@ -33,10 +33,7 @@ class EmailVerification(models.Model):
         subject = f'Подтверждение учетной записи для {self.user.username}'
         message = 'Для подтверждения учетной записи для {} перейдите по ссылке {}'
         message = message.format(self.user.email, verification_link)
-        # message = 'Для подтверждения учетной записи для {} перейдите по ссылке{}'.format(
-        #     self.user.email,
-        #     verification_link
-        # )
+
         send_mail(
             subject=subject,
             message=message,
