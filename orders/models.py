@@ -25,6 +25,11 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     status = models.SmallIntegerField(default=CREATED, choices=STATUSES)
 
+    class Meta:
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы'
+        ordering = ('-id',)
+
     def __str__(self):
         return f'Заказ № {self.id}. Заказчик: {self.first_name} {self.second_name}'
 

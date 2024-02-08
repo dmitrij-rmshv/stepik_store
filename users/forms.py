@@ -2,8 +2,9 @@ from django import forms
 from django.contrib.auth.forms import (AuthenticationForm, UserChangeForm,
                                        UserCreationForm)
 
-from users.models import User
+from users.models import Feedback, User
 from users.tasks import send_email_verification
+from users.utilities import fb_topics
 
 
 class UserLoginForm(AuthenticationForm):
@@ -57,3 +58,18 @@ class UserProfileForm(UserChangeForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'image', 'username', 'email')
+
+
+class UserFeedbackForm(forms.ModelForm):
+
+    topic = forms.ChoiceField(
+        widget=forms.widgets.Select(attrs={'size': 1, 'class': "form-control py-4"}),
+        choices=fb_topics(), required=False, initial=fb_topics()[3]
+    )
+    content = forms.CharField(
+        widget=forms.widgets.Textarea(attrs={'class': "form-control py-4", 'placeholder': "Изложите суть обращения"})
+    )
+
+    class Meta:
+        model = Feedback
+        fields = ('topic', 'content')

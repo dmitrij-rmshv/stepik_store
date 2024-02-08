@@ -1,0 +1,92 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% load static humanize %}
+
+{% block css %}
+    <link href="{% static '/vendor/css/orders.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <!-- Page Content -->
+    <section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+            {% if messages or form.non_field_errors %}
+                <div class="alert {% if messages %} alert-success
+                            {% else %} alert-warning {% endif %}
+                    alert-dismissible fade show" role="alert" style="margin-top: 50px;">
+                    {% if messages %}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    {% else %}
+                        {{ form.non_field_errors }}
+                    {% endif %}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+        <a class="btn btn-success btn-lg float-right mt-4" href="{% url 'users:add_feedback' %}">
+            + Создать обращение обратной связи
+        </a>
+
+        {% if feedbacks %}
+            <div class="container pt-5">
+                <div class="text-center mt-5">
+                    <h1>Обращения к администратору</h1>
+                    <div class="orders mt-5">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr class="table-light">
+                                <th scope="col">Создано</th>
+                                <th scope="col">Тема</th>
+                                <th scope="col">Содержание</th>
+                                <th scope="col">Статус</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for fb in feedbacks %}
+                                {% if fb.status == 0 %}
+                                <tr class="table-info">
+                                {% elif fb.status == 1 %}
+                                <tr class="table-secondary">
+                                {% elif fb.status == 2 %}
+                                <tr class="table-danger">
+                                {% elif fb.status == 3 %}
+                                <tr class="table-warning">
+                                {% elif fb.status == 4 %}
+                                <tr class="table-success">
+                                {% else %}
+                                <tr>
+                                {% endif %}
+                                    <th scope="row">{{ fb.created|naturaltime }}</th>
+                                    <td>{{ fb.topic }}</td>
+                                    <td>{{ fb.content|truncatewords:30 }}</td>
+                                    <td>
+                                        {% if fb.status == 1 %}
+                                        <a href="{% url 'users:feedback_detail' fb.id %}">просмотрено</a>
+                                        {% elif fb.status == 2 %}
+                                        <a href="{% url 'users:feedback_detail' fb.id %}">отклонено</a>
+                                        {% elif fb.status == 3 %}
+                                        <a href="{% url 'users:feedback_detail' fb.id %}">в работе</a>
+                                        {% elif fb.status == 4 %}
+                                        <a href="{% url 'users:feedback_detail' fb.id %}">отработано</a>
+                                        {% else %}
+                                        ожидает рассмотрения
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}

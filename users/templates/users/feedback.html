@@ -1,0 +1,43 @@
+{% extends 'users/base.html' %}
+{% load static humanize %}
+
+{% block content %}
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            {% if messages or form.non_field_errors %}
+                <div class="alert {% if messages %} alert-success
+                            {% else %} alert-warning {% endif %}
+                    alert-dismissible fade show" role="alert" style="margin-top: 50px;">
+                    {% if messages %}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    {% else %}
+                        {{ form.non_field_errors }}
+                    {% endif %}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+<!-- Page Content -->
+            <div class="card text-center shadow-lg mt-5">
+                <div class="card-header">
+                    {{ object.topic }} от {{ object.created }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-right text-muted">{{ object.from_user }} :</h5>
+                    <p class="card-text text-right text-muted">{{ object.content }}</p>
+                    <h5 class="card-title text-left">Администратор : </h5>
+                    <p class="card-title text-left">{{ object.answer }}</p>
+                    <a href="{% url 'users:feedback_list' %}" class="btn btn-primary">Назад</a>
+                </div>
+                <div class="card-footer text-muted">
+                    {{ object.answered|naturaltime }} <br> Статус: {{ object.status }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
