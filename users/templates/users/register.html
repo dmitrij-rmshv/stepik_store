@@ -35,11 +35,11 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label class="small mb-1" for="{{ form.first_name.id_for_label }}">Пользовательское имя (login)</label>
+                                <label class="small mb-1" for="{{ form.username.id_for_label }}">Пользовательское имя (login)</label>
                                 {{ form.username }}
                             </div>
                             <div class="col-md-6">
-                                <label class="small mb-1" for="{{ form.first_name.id_for_label }}">Адрес электронной
+                                <label class="small mb-1" for="{{ form.email.id_for_label }}">Адрес электронной
                                     почты</label>
                                 {{ form.email }}
                             </div>
@@ -47,13 +47,13 @@
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="small mb-1" for="{{ form.first_name.id_for_label }}">Пароль</label>
+                                    <label class="small mb-1" for="{{ form.password1.id_for_label }}">Пароль</label>
                                     {{ form.password1 }}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="small mb-1" for="{{ form.first_name.id_for_label }}">Подтверждение
+                                    <label class="small mb-1" for="{{ form.password2.id_for_label }}">Подтверждение
                                         пароля</label>
                                     {{ form.password2 }}
                                 </div>

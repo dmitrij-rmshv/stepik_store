@@ -14,7 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
         ('name', 'category'), 'description', ('price', 'quantity'), 'stripe_product_price_id', ('image', 'on_sale'),
     )
     # readonly_fields = ('description',)
-    search_fields = ('name',)
+    search_fields = ('name', 'description')
     ordering = ('-name',)
 
 

@@ -1,0 +1,37 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'vendor/css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!-- Page Content -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="mt-5">о сайте и его адинистраторе</h1>
+                    <p>Приветствую! Меня зовут Дмитрий Ромашев, <br>
+                        я начинающий программист из Санкт-Петербурга, Россия.
+                    </p>
+                    <p>Данный сайт slavito.ru является моим учебным проектом
+                        в веб-программировании, и не обязывает вас к каким-либо действиям.
+                    </p>
+                    <p>Вы свободны посещать его, наполнять корзину любыми товарами,
+                        и даже условно покупать их, введя фиктивный номер банковской карты
+                        4242 4242 4242 4242 (остальные параметры банковской карты произвольны). <br>
+                        Не рекомендую вводить действительные данные вашей банковской карты
+                        - они могут оказаться на стороннем, независящем от меня
+                        платежном сервисе <a href="https://stripe.com/">stripe</a>, который подключен в тестовом режиме.
+                    </p>
+                    <button id="start-purchase-btn" type="button" class="btn btn-lg">
+                        <a id="start-purchase-link" href="{% url 'user:registration' %}">
+                            Давай зарегистрируемся!
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

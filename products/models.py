@@ -1,5 +1,6 @@
 import stripe
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 
 from users.models import User
@@ -12,8 +13,8 @@ class ProductCategory(models.Model):
     description = models.TextField(null=True, blank=True)
 
     class Meta:
-        verbose_name = 'Категории'
-        verbose_name_plural = 'Категория'
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
         ordering = ('id',)
 
     def __str__(self):
@@ -32,7 +33,7 @@ class Product(models.Model):
     description = models.TextField(verbose_name='описание', )
     price = models.DecimalField(verbose_name='цена', max_digits=8, decimal_places=2)
     quantity = models.PositiveIntegerField(verbose_name='кол.', default=0)
-    image = models.ImageField(verbose_name='изображение', upload_to='products_images')
+    image = models.ImageField(verbose_name='изображение', upload_to='products_images', null=True, blank=True)
     stripe_product_price_id = models.CharField(verbose_name='stripe_price.id', max_length=64, null=True, blank=True)
     category = models.ForeignKey(verbose_name='категория', to=ProductCategory, on_delete=models.CASCADE)
     on_sale = models.BooleanField(verbose_name='on', default=True)  # ɥҔɧʮЊЋѤҾӔῷ₪√♦♯￼
@@ -133,3 +134,17 @@ class Basket(models.Model):
             'sum': float(self.sum())
         }
         return basket_item
+
+    @classmethod
+    def create_or_update(cls, product_id, user):
+        # product = Product.objects.get(id=product_id)
+        try:
+            basket = Basket.objects.get(user=user, product_id=product_id)
+            basket.quantity += 1
+            basket.save()
+            is_created = False
+        except ObjectDoesNotExist:
+            basket = Basket.objects.create(user=user, product_id=product_id, quantity=1)
+            is_created = True
+
+        return basket, is_created
