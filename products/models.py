@@ -83,6 +83,9 @@ class Product(models.Model):
             metadata=metadata,
         )
 
+    def delete_stripe_product(self):
+        pass
+
     # def fill_prod_id(self):
     #     stripe_product = stripe.Product.search()
 

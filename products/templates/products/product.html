@@ -1,0 +1,50 @@
+{% extends 'products/base.html' %}
+{% load static humanize %}
+
+{% block css %}
+    <link href="{% static 'vendor/css/products.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-5">
+                <div class="card mt-4 p-1">
+                    <img class="card-img-top"
+                         src="{{ product.image.url }}"
+                         alt="Здесь должно быть изображение {{ product.name }}">
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="mt-4">
+                    <div class="card-body text-center">
+                        <p class="card-text small">Товары ->
+                            <a href="{% url 'products:category' product.category_id %}">{{ product.category }}</a>
+                        </p>
+                        <h3 class="card-title">{{ product.name }}</h3>
+                        <p class="card-text">{{ product.description }}</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="card-text small">в наличии {{ product.quantity }}</p>
+                        <h5>{{ product.price|intcomma }} руб.</h5>
+                        <a class="btn btn-outline-success" href="{% url 'products:basket_add' product.id %}">
+                            Отправить в корзину
+                        </a>
+                        <a class="btn btn-outline-success" href="{{ back_url }}">
+                            Назад
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+{% endblock %}
+
+
