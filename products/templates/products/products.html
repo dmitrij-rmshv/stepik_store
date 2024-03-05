@@ -32,7 +32,8 @@
             <!-- /.col-lg-3 -->
 
             <div class="col-lg-9">
-
+                <!-- carousel -->
+                {% if 'Store' in title %}
                 <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -59,23 +60,25 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+                {% endif %}
 
                 <div class="row">
                   
                     {% for product in page_obj %}
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="col-lg-4 col-md-6 col-xs-6 mb-1 mt-3">
                         <div class="card h-100">
-                            <a href="#">
+                            <a href="{% url 'products:product' product.id %}">
                                 <img class="card-img-top"
                                      src="{{ product.image.url }}"
-                                     alt="">
+                                     alt="Здесь должно быть изображение {{ product.name }}">
                             </a>
                             <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">{{ product.name }}</a>
-                                </h4>
-                                <h5>{{ product.price|intcomma }} руб.</h5>
-                                <p class="card-text">{{ product.description }}</p>
+                                <h6 class="card-title">
+                                    <a href="{% url 'products:product' product.id %}">
+                                        {{ product.name }}
+                                    </a>
+                                </h6>
+                                <p>{{ product.price|intcomma }} руб.</p>
                             </div>
                             <div class="card-footer text-center">
                                 <a class="btn btn-outline-success" href="{% url 'products:basket_add' product.id %}">
@@ -88,9 +91,10 @@
                   
                 </div>
 
+                <!-- paginator -->
                 {% if page_obj.has_other_pages %}
                     <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
+                        <ul class="pagination justify-content-center mt-2">
 
                         {% if page_obj.has_previous %}
                             <li class="page-item">
@@ -144,7 +148,7 @@
 <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Дмитрий Ромашев 2023 - 2024</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Дмитрий Ромашев 2023 - {% now 'Y' %}</p>
         </div>
         <!-- /.container -->
     </footer>

@@ -10,11 +10,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <meta property="og:title" content="Магазинчик">
-    <meta property="og:description" content="Эксклюзивные шмотки для модниц WELCOME!">
-    <meta property="og:image" content="https://slavito.ru/static/vendor/img/favicon.ico">
-    <meta property="og:url" content="https://slavito.ru/">
+    {% if 'Купить ' in title %}
+        <meta property="og:title" content="{{ product.name }}">
+        <meta property="og:description" content="{{ product.description }}">
+        <meta property="og:image" content="{{ product.image.url }}">
+        <meta property="og:url" content="{% url 'products:product' product.id %}">
+    {% else %}
+        <meta property="og:title" content="Магазинчик">
+        <meta property="og:description" content="Эксклюзивные шмотки для модниц WELCOME!">
+        <meta property="og:image" content="https://slavito.ru/static/vendor/img/SlavjankaBooard.png">
+        <meta property="og:url" content="https://slavito.ru/">
+    {% endif %}
 
     <title>{{ title }}</title>
     <link rel="shortcut icon" type="image/png" href="{% static 'vendor/img/favicon.ico' %}"/>
@@ -104,6 +110,8 @@
 
 <!-- FontAwesome script -->
 <script src="{% static 'vendor/fontawesome/fontawesome-icons.js' %}" crossorigin="anonymous"></script>
+
+{% block scripts %} {% endblock %}
 
 </body>
 
